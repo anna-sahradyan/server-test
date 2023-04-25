@@ -11,20 +11,20 @@ const PORT = process.env.PORT || 4000;
 const app = express();
 dotenv.config();
 
-// if (process.env.NODE_ENV === "production") {
-//     app.use(express.static(path.join(__dirname, "../client-test/build")))
-//     app.get("*", (req, res) => {
-//         res.sendFile(
-//             path.resolve(__dirname, "../", "client-test", "build", "index.html")
-//         )
-//     })
-//
-// } else {
-//     app.get("/", (req, res) => {
-//         res.send("Home Page")
-//     })
-//
-// }
+if (process.env.NODE_ENV === "production") {
+    app.use(express.static(path.join(__dirname, "../client-test/build")))
+    app.get("*", (req, res) => {
+        res.sendFile(
+            path.resolve(__dirname, "../", "client-test", "build", "index.html")
+        )
+    })
+
+} else {
+    app.get("/", (req, res) => {
+        res.send("Home Page")
+    })
+
+}
 
 app.get("/", (req, res) => {
     res.send("Home Page")
