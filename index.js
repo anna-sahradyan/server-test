@@ -4,7 +4,7 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import cors from "cors";
 import userRouter from "./routes/user.routes.js";
-// import path from "path";
+ import path from "path";
 //?Constants
 
 const PORT = process.env.PORT || 4000;
@@ -12,10 +12,10 @@ const app = express();
 dotenv.config();
 
 if (process.env.NODE_ENV === "production") {
-    app.use(express.static(path.join(__dirname, "./client-test/build")))
+    app.use(express.static(path.join(__dirname, "../test/build")))
     app.get("*", (req, res) => {
         res.sendFile(
-            path.resolve(__dirname, "./", "client-test", "build", "index.html")
+            path.resolve(__dirname, "../", "test", "build", "index.html")
         )
     })
 
